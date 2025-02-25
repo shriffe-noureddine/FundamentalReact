@@ -6,7 +6,7 @@ import List from './components/List'
 function App() {
 
   return <main>
-    <List></List>
+    <List/>
   </main>
 }
 

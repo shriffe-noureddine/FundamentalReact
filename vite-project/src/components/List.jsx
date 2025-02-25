@@ -1,10 +1,20 @@
+import NewPost from './NewPost'
 import Post from './Post'
-
+import { useState } from 'react';
 function List(){
-    return <ul>
-        <Post name="Noureddine" body="This is my first custom component in React"></Post>
-        <Post name="Nahla" body="Hello World"></Post>
-    </ul>
+
+    const [useName, setName] = useState('')
+    const [useBody, setBody] = useState('')
+    function nameChangeHandler(e){
+        setName(e.target.value);
+    }
+    function bodyChangeHandler(e){
+        setBody(e.target.value);
+    }
+    return <>
+        <NewPost name={nameChangeHandler} body={bodyChangeHandler}/>
+        <Post name={useName} body={useBody}/>
+    </>
 }
 
 export default List;
