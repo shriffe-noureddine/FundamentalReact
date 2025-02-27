@@ -1,13 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.module.css'
 import List from './components/List'
-function App() {
+import MainHeader from './components/MainHeader'
+import { useState } from 'react'
 
-  return <main>
-    <List/>
-  </main>
+function App() {
+  const [isvisible, setVisibility] = useState(false)
+  function hideVisibilityHandler(){
+    setVisibility(false);
+}
+
+function showVisibilityHandler(){
+  setVisibility(true);
+}
+
+  return <>
+    <MainHeader onCreatePost={showVisibilityHandler}/>
+    <List isPosting={isvisible} onStopPosting={hideVisibilityHandler}/>
+  </>
 }
 
 export default App
