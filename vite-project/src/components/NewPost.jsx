@@ -1,15 +1,41 @@
-import classes from './NewPost.module.css';
+import classes from "./NewPost.module.css";
+import { useState } from "react";
 
-function NewPost({onNameChange, onBodyChange}) {
+function NewPost({ onCancelSubmition, onAddPost }) {
+  const [name, setName] = useState("");
+  const [body, setBody] = useState("");
+  function nameChangeHandler(e) {
+    setName(e.target.value);
+  }
+  function bodyChangeHandler(e) {
+    setBody(e.target.value);
+  }
+
+  function submitHandler(e) {
+    e.preventDefault();
+    const postData = {
+      body: body,
+      name: name,
+    };
+    onAddPost(postData);
+    onCancelSubmition();
+  }
+
   return (
-    <form className={classes.form}>
+    <form className={classes.form} onSubmit={submitHandler}>
       <p>
         <label htmlFor="body">Text</label>
-        <textarea id="body" required rows={3} onChange={onBodyChange}/>
+        <textarea id="body" required rows={3} onChange={bodyChangeHandler} />
       </p>
       <p>
         <label htmlFor="name">Your name</label>
-        <input type="text" id="name" required onChange={onNameChange}/>
+        <input type="text" id="name" required onChange={nameChangeHandler} />
+      </p>
+      <p>
+        <button type="button" onClick={onCancelSubmition}>
+          Cancel
+        </button>
+        <button>Submit</button>
       </p>
     </form>
   );
