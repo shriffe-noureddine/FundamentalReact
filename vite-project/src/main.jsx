@@ -14,6 +14,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Posts />,
+        // loader: dataLoader,
         children: [{ path: "NewPost", element: <NewPost /> }],
       },
     ],

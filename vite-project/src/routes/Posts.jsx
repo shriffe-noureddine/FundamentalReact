@@ -13,3 +13,9 @@ function Posts() {
 }
 
 export default Posts;
+
+// export async function dataLoader() {
+//   const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+//   const resData = await response.json;
+//   return resData;
+// }
